@@ -1,18 +1,27 @@
+from dataclasses import dataclass
 import hashlib
 import json
 from time import time
 from typing import TypedDict
 
+@dataclass
+class Proof:
+    raw: int
+
+@dataclass
+class Hash:
+    raw: str
+
 class Block(TypedDict):
     index: int
     timestamp: float
-    proof: int
-    previous_hash: str
+    proof: Proof
+    previous_hash: Hash
 
-def block_hash(block: Block) -> str:
+def block_hash(block: Block) -> Hash:
     """ブロックのハッシュを求める"""
     encoded = json.dumps(block, sort_keys=True).encode()
-    return hashlib.sha256(encoded).hexdigest()
+    return Hash(hashlib.sha256(encoded).hexdigest())
 
 class Transaction(TypedDict):
     sender: str
@@ -23,14 +32,14 @@ class Blockchain:
     def __init__(self) -> None:
         self.chain: list[Block] = []
         self.current_transactions: list[Transaction] = []
-        self.new_block(previous_hash="1", proof=100)
+        self.new_block(previous_hash=Hash("1"), proof=Proof(100))
 
     @property
     def last_block(self) -> Block:
         """チェーンの最後のブロックを返す"""
         return self.chain[-1]
 
-    def new_block(self, proof: int, previous_hash: str | None = None) -> None:
+    def new_block(self, proof: Proof, previous_hash: Hash | None = None) -> None:
         """新しいブロックを作り、チェーンに加える
 
         Args:
