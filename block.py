@@ -1,13 +1,10 @@
-from dataclasses import dataclass
 import hashlib
 import json
-from typing import TypedDict
+from typing import NewType, TypedDict
 
 from proof import Proof
 
-@dataclass
-class Hash:
-    raw: str
+Hash = NewType("Hash", str)
 
 class Block(TypedDict):
     index: int

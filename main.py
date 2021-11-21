@@ -7,7 +7,9 @@ from transaction import Transaction
 class Blockchain:
     def __init__(self) -> None:
         self.chain: list[Block] = []
+
         self.current_transactions: list[Transaction] = []
+
         self.new_block(previous_hash=Hash("1"), proof=Proof(100))
 
     @property
@@ -44,4 +46,5 @@ class Blockchain:
         self.current_transactions.append(transaction)
 
 if __name__ == "__main__":
+    Blockchain()
     print("Blockchain")

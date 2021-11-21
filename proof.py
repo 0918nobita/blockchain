@@ -1,5 +1,3 @@
-from dataclasses import dataclass
+from typing import NewType
 
-@dataclass
-class Proof:
-    raw: int
+Proof = NewType("Proof", int)
