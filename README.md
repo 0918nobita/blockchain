@@ -21,5 +21,5 @@ poetry run mypy .
 ## Run
 
 ```bash
-poetry run python main.py
+poetry run python -m blockchain
 ```
