@@ -45,6 +45,5 @@ class Blockchain:
 
         self.current_transactions.append(transaction)
 
-if __name__ == "__main__":
-    Blockchain()
-    print("Blockchain")
+Blockchain()
+print("Blockchain")
