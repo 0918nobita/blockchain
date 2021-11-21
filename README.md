@@ -1,23 +1,25 @@
 # Blockchain
 
-Python 3.10 or later is required
+## Requirements
+
+- Python 3.10 or later
+- Poetry
 
 ## Setup
 
 ```bash
-python -m venv ./venv
-source ./venv/bin/activate
-pip install -r requirements.txt
+poetry shell
+poetry install
 ```
 
 ## Type Checking
 
 ```bash
-mypy .
+poetry run mypy .
 ```
 
 ## Run
 
 ```bash
-python blockchain.py
+python main.py
 ```

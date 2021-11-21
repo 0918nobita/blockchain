@@ -1,32 +1,8 @@
-from dataclasses import dataclass
-import hashlib
-import json
 from time import time
-from typing import TypedDict
 
-@dataclass
-class Proof:
-    raw: int
-
-@dataclass
-class Hash:
-    raw: str
-
-class Block(TypedDict):
-    index: int
-    timestamp: float
-    proof: Proof
-    previous_hash: Hash
-
-def block_hash(block: Block) -> Hash:
-    """ブロックのハッシュを求める"""
-    encoded = json.dumps(block, sort_keys=True).encode()
-    return Hash(hashlib.sha256(encoded).hexdigest())
-
-class Transaction(TypedDict):
-    sender: str
-    recipient: str
-    amount: int
+from block import Block, Hash, block_hash
+from proof import Proof
+from transaction import Transaction
 
 class Blockchain:
     def __init__(self) -> None:
@@ -66,3 +42,6 @@ class Blockchain:
         """
 
         self.current_transactions.append(transaction)
+
+if __name__ == "__main__":
+    print("Blockchain")
