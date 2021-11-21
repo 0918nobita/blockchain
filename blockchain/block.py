@@ -2,7 +2,7 @@ import hashlib
 import json
 from typing import NewType, TypedDict
 
-from proof import Proof
+from blockchain.proof import Proof
 
 Hash = NewType("Hash", str)
 

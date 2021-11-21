@@ -1,8 +1,8 @@
 from time import time
 
-from block import Block, Hash, block_hash
-from proof import Proof
-from transaction import Transaction
+from blockchain.block import Block, Hash, block_hash
+from blockchain.proof import Proof
+from blockchain.transaction import Transaction
 
 class Blockchain:
     def __init__(self) -> None:
